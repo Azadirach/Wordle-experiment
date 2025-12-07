@@ -1,115 +1,149 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Wordle - A daily word game" />
-    <meta property="og:url" content="https://calatop.github.io/Wordle/" />
-    <meta
-        property="description"
-        content="Guess the hidden word in 6 tries. A new puzzle is available each day."
-      />
-    <link rel="stylesheet" href="wordle.css">
-    <link href="icon.png" rel="icon shortcut" />
-    <script src="script.js" defer></script>
-    <title>Wordle</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trisha's Birthday Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Libre+Franklin:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-  <body>
-    <!-- STICKY HEADER -->
-    <header class="nyt-header">
-      <div class="nyt-header-inner">
-        <div class="nyt-header-left">
-          <button class="nyt-menu-button" aria-label="Open menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+  <!-- STICKY HEADER -->
+  <header class="nyt-header">
+    <div class="nyt-header-inner">
+      <div class="nyt-header-left">
+        <button class="nyt-menu-button" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-          
-          <a href="index.html" class="nyt-logo-link">
-            <div class="nyt-logo">
-              <img
-                src="Wordle_Logo.svg"
-                alt="The New York Times T icon"
-                class="nyt-logo-icon"
-              />
-              <span class="nyt-logo-text">Wordle</span>
-            </div>
+        <div class="nyt-logo">
+          <img
+            src="New_York_Times_T_icon.svg"
+            alt="The New York Times T icon"
+            class="nyt-logo-icon"
+          />
+          <span class="nyt-logo-text">Games</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BLUE HERO STRIP -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>HAPPY BIRTHDAY TRISHA !!</h1>
+      <p>Welcome to your custom New-York-Times-style puzzle page 🎉</p>
+    </div>
+  </section>
+
+  <!-- GAMES SECTION -->
+  <section class="games">
+    <h2 class="games-heading"></h2>
+    
+    <div class="games-grid">
+      <!-- Wordle Card -->
+      <div class="game-card game-card--wordle">
+        <div class="game-card-top">
+          <img src="Wordle_Logo.svg" alt="Wordle" class="game-icon" />
+          <h2>Wordle</h2>
+        </div>
+        <div class="game-card-bottom">
+          <a href="wordle.html">
+            <button class="play-button">Play</button>
           </a>
         </div>
       </div>
-    </header>
 
-    <div class="alert-container" data-alert-container></div>
-    <div data-guess-grid class="guess-grid">
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
+      <!-- Connections Card -->
+      <div class="game-card game-card--connections">
+        <div class="game-card-top">
+          <img src="The_New_York_Times_Connections.svg" alt="Connections" class="game-icon" />
+          <h2>Connections</h2>
+        </div>
+        <div class="game-card-bottom">
+          <a href="connections.html">
+            <button class="play-button">Play</button>
+          </a>
+          
+        </div>
+      </div>
+
+      <!-- Spelling Bee Card -->
+      <div class="game-card game-card--spelling">
+        <div class="game-card-top">
+          <img src="spelling-bee-icon.svg" alt="Spelling Bee" class="game-icon" />
+          <h2>Spelling Bee</h2>
+        </div>
+        <div class="game-card-bottom">
+          <button class="play-button">Play</button>
+        </div>
+      </div>
     </div>
-    <div data-keyboard class="keyboard">
-      <button class="key" data-key="Q">Q</button>
-      <button class="key" data-key="W">W</button>
-      <button class="key" data-key="E">E</button>
-      <button class="key" data-key="R">R</button>
-      <button class="key" data-key="T">T</button>
-      <button class="key" data-key="Y">Y</button>
-      <button class="key" data-key="U">U</button>
-      <button class="key" data-key="I">I</button>
-      <button class="key" data-key="O">O</button>
-      <button class="key" data-key="P">P</button>
-      <div class="space"></div>
-      <button class="key" data-key="A">A</button>
-      <button class="key" data-key="S">S</button>
-      <button class="key" data-key="D">D</button>
-      <button class="key" data-key="F">F</button>
-      <button class="key" data-key="G">G</button>
-      <button class="key" data-key="H">H</button>
-      <button class="key" data-key="J">J</button>
-      <button class="key" data-key="K">K</button>
-      <button class="key" data-key="L">L</button>
-      <div class="space"></div>
-      <button data-enter class="key large">Enter</button>
-      <button class="key" data-key="Z">Z</button>
-      <button class="key" data-key="X">X</button>
-      <button class="key" data-key="C">C</button>
-      <button class="key" data-key="V">V</button>
-      <button class="key" data-key="B">B</button>
-      <button class="key" data-key="N">N</button>
-      <button class="key" data-key="M">M</button>
-      <button data-delete class="key large">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-          <path fill="var(--color-tone-1)" d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
-        </svg>
-      </button>
+  </section>
+
+  <!-- NYT-STYLE FOOTER -->
+  <footer class="nyt-footer">
+    <div class="nyt-footer-inner">
+      <!-- Left: about text -->
+      <section class="footer-about">
+        <h3>ABOUT TRISHA'S BIRTHDAY GAMES</h3>
+        <p>
+          Inspired by New York Times Games, this page was created as a birthday
+          gift for Trisha — featuring custom versions of Connections, Wordle and
+          Spelling Bee. Enjoy solving, sharing and celebrating!
+        </p>
+        <p>
+          Want more puzzles? <a href="#">Subscribe now</a> for unlimited access
+          (in spirit, at least 😉).
+        </p>
+      </section>
+
+      <!-- Right: link columns -->
+      <section class="footer-links-grid">
+        <div class="footer-column">
+          <h4>BIRTHDAY GAMES</h4>
+          <a href="#">Connections</a>
+          <a href="#">Wordle</a>
+          <a href="#">Spelling Bee</a>
+          <a href="#">All Games</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>EXTRAS</h4>
+          <a href="#">Hint Archive</a>
+          <a href="#">Scoreboard</a>
+          <a href="#">How to Play</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>COMMUNITY</h4>
+          <a href="#">Share Your Grid</a>
+          <a href="#">Puzzle Stories</a>
+          <a href="#">Message for Trisha</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>LEARN MORE</h4>
+          <a href="#">About This Gift</a>
+          <a href="#">Contact the Creator</a>
+        </div>
+      </section>
     </div>
-  </body>
-  </html>
+
+    <div class="footer-bottom">
+      <span>© 2025 Trisha's Birthday Games (fan-made).</span>
+      <span class="footer-bottom-links">
+        <a href="#">Sitemap</a>
+        <span> | </span>
+        <a href="#">Privacy Policy</a>
+        <span> | </span>
+        <a href="#">Terms of Service</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>
