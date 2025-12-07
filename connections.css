@@ -25,6 +25,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #000; /* Force black text */
 }
 
 /* NYT Header Styles */
@@ -108,6 +109,7 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: -0.04em;
+    color: #000; /* Force black */
 }
 
 /* Game Container */
@@ -127,6 +129,7 @@ h1 {
     margin-bottom: clamp(8px, 1.5vw, 10px);
     font-size: clamp(24px, 5vw, 32px);
     font-weight: 700;
+    color: #000; /* Force black */
 }
 
 .instructions {
@@ -159,21 +162,23 @@ h1 {
     }
 }
 
-.solved-group.yellow { background-color: #f9df6d; }
-.solved-group.green { background-color: #a0c35a; }
-.solved-group.blue { background-color: #b0c4ef; }
-.solved-group.purple { background-color: #ba81c5; }
+.solved-group.yellow { background-color: #f9df6d; color: #000; }
+.solved-group.green { background-color: #a0c35a; color: #000; }
+.solved-group.blue { background-color: #b0c4ef; color: #000; }
+.solved-group.purple { background-color: #ba81c5; color: #000; }
 
 .group-title {
     font-weight: 700;
     margin-bottom: clamp(6px, 1.3vw, 8px);
     text-transform: uppercase;
     font-size: clamp(11px, 2.3vw, 14px);
+    color: #000; /* Force black */
 }
 
 .group-words {
     font-size: clamp(13px, 2.6vw, 16px);
     font-weight: 500;
+    color: #000; /* Force black */
 }
 
 .grid {
@@ -204,6 +209,16 @@ h1 {
     justify-content: center;
     aspect-ratio: 1.8 / 1;
     min-height: 60px;
+    color: #000 !important; /* Force black with !important to override any inherited styles */
+    text-decoration: none !important; /* Remove any underlines */
+}
+
+/* Override any potential link styling */
+.word-card a,
+.word-card span,
+.word-card * {
+    color: #000 !important;
+    text-decoration: none !important;
 }
 
 @media (max-width: 768px) {
@@ -235,7 +250,15 @@ h1 {
 
 .word-card.selected {
     background-color: #5a594e;
-    color: white;
+    color: white !important;
+}
+
+/* Override link color for selected state */
+.word-card.selected,
+.word-card.selected a,
+.word-card.selected span,
+.word-card.selected * {
+    color: white !important;
 }
 
 .word-card:disabled {
@@ -372,6 +395,7 @@ button {
 
 .game-over p {
     margin-bottom: 25px;
+    color: #000;
 }
 
 .btn-new-game {
@@ -384,4 +408,15 @@ button {
 
 .btn-new-game:hover {
     background-color: #333;
+}
+
+/* Additional safeguard against any link styles from GitHub Pages */
+a.word-card,
+button.word-card {
+    color: #000 !important;
+}
+
+a.word-card.selected,
+button.word-card.selected {
+    color: white !important;
 }
