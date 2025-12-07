@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connections Game</title>
+    <link rel="stylesheet" href="connections.css">
+</head>
+
+<body>
+    <header class="nyt-header">
+        <div class="nyt-header-inner">
+            <div class="nyt-header-left">
+                <button class="nyt-menu-button" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <a href="index.html" class="nyt-logo-link">
+                    <div class="nyt-logo">
+                        <img src="The_New_York_Times_Connections.svg" alt="The New York Times connections icon" class="nyt-logo-icon"/>
+                        <span class="nyt-logo-text">Connections</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+     
+    <div class="game-container">
+        <h1>Connections</h1>
+        <p class="instructions">Find groups of four items that share something in common.</p>
+        
+        <div id="solved-groups" class="solved-groups"></div>
+        
+        <div id="message" class="message" style="display: none;"></div>
+        
+        <div id="mistakes" class="mistakes">
+            <div>Mistakes remaining:</div>
+            <div class="mistake-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+        <div id="grid" class="grid"></div>
+        
+        <div class="controls">
+            <button class="btn-shuffle" onclick="shuffleWords()">Shuffle</button>
+            <button class="btn-deselect" onclick="deselectAll()">Deselect All</button>
+            <button class="btn-submit" id="submit-btn" onclick="submitGuess()" disabled>Submit</button>
+        </div>
+
+        <div id="game-over" class="game-over" style="display: none;">
+            <h2>Game Over!</h2>
+            <p id="game-over-message"></p>
+            <button class="btn-new-game" onclick="initGame()">New Game</button>
+        </div>
+    </div>
+
+    <script src="connections.js"></script>
+</body>
+</html>
