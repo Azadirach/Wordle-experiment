@@ -1,0 +1,461 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121213;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100svh; /* Better mobile viewport */
+  overflow: hidden;
+  touch-action: manipulation; /* Disable double-tap zoom */
+}
+
+/* ===== HEADER ===== */
+.nyt-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.nyt-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nyt-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nyt-menu-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nyt-menu-button:active {
+  background: #f5f5f5;
+}
+
+.nyt-menu-button span {
+  width: 16px;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.nyt-logo-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.nyt-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nyt-logo-icon {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.nyt-logo-text {
+  margin-left: 8px;
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+/* ===== ALERTS ===== */
+.alert-container {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.alert {
+  background-color: #d4d6da;
+  color: #000;
+  padding: 12px 16px;
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alert.hide {
+  opacity: 0;
+}
+
+/* ===== GAME CONTAINER ===== */
+/* Container for grid and keyboard that shares remaining space */
+.guess-grid,
+.keyboard {
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+/* ===== GUESS GRID ===== */
+.guess-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  padding: 10px;
+  max-width: min(350px, 90vw);
+  width: 100%;
+  margin: 0 auto;
+  /* Height calculated to leave room for keyboard */
+  max-height: calc(100vh - 220px);
+  max-height: calc(100svh - 220px);
+  aspect-ratio: 5 / 6;
+}
+
+.tile {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #3a3a3c;
+  background-color: transparent;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  transition: transform 250ms linear;
+}
+
+.tile[data-state="active"] {
+  border-color: #565758;
+}
+
+.tile[data-state="wrong"] {
+  border: none;
+  background-color: #3a3a3c;
+}
+
+.tile[data-state="wrong-location"] {
+  border: none;
+  background-color: #b59f3b;
+}
+
+.tile[data-state="correct"] {
+  border: none;
+  background-color: #DB7F8E;
+}
+
+.tile.shake {
+  animation: shake 250ms ease-in-out;
+}
+
+.tile.dance {
+  animation: dance 500ms ease-in-out;
+}
+
+.tile.flip {
+  transform: rotateX(90deg);
+}
+
+/* ===== KEYBOARD ===== */
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-auto-rows: minmax(42px, 58px);
+  gap: 6px;
+  padding: 8px;
+  max-width: min(500px, 95vw);
+  width: 100%;
+  margin: 0 auto 10px auto;
+}
+
+.key {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0;
+  grid-column: span 2;
+  border: none;
+  background-color: #818384;
+  color: #fff;
+  fill: #fff;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.key.large {
+  grid-column: span 3;
+  font-size: 12px;
+}
+
+.key:active {
+  filter: brightness(1.2);
+}
+
+.key > svg {
+  width: 22px;
+  height: 22px;
+}
+
+.key.wrong {
+  background-color: #3a3a3c;
+}
+
+.key.wrong-location {
+  background-color: #b59f3b;
+}
+
+.key.correct {
+  background-color: #DB7F8E;
+}
+
+.space {
+  grid-column: span 1;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes shake {
+  10% { transform: translateX(-5%); }
+  30% { transform: translateX(5%); }
+  50% { transform: translateX(-7.5%); }
+  70% { transform: translateX(7.5%); }
+  90% { transform: translateX(-5%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes dance {
+  20% { transform: translateY(-50%); }
+  40% { transform: translateY(5%); }
+  60% { transform: translateY(-25%); }
+  80% { transform: translateY(2.5%); }
+  90% { transform: translateY(-5%); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+/* Very small phones (320px-360px) */
+@media (max-width: 360px) {
+  .guess-grid {
+    gap: 4px;
+    padding: 8px;
+    max-height: calc(100vh - 200px);
+    max-height: calc(100svh - 200px);
+  }
+  
+  .tile {
+    font-size: 24px;
+  }
+  
+  .keyboard {
+    grid-auto-rows: minmax(40px, 50px);
+    gap: 4px;
+    padding: 6px;
+    margin-bottom: 8px;
+  }
+  
+  .key {
+    font-size: 11px;
+  }
+  
+  .key > svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Small phones (361px-400px) */
+@media (min-width: 361px) and (max-width: 400px) {
+  .guess-grid {
+    max-height: calc(100vh - 210px);
+    max-height: calc(100svh - 210px);
+  }
+  
+  .tile {
+    font-size: 26px;
+  }
+  
+  .keyboard {
+    grid-auto-rows: minmax(42px, 52px);
+  }
+}
+
+/* Larger phones (401px-500px) */
+@media (min-width: 401px) and (max-width: 500px) {
+  .guess-grid {
+    max-height: calc(100vh - 215px);
+    max-height: calc(100svh - 215px);
+  }
+  
+  .tile {
+    font-size: 28px;
+  }
+  
+  .keyboard {
+    grid-auto-rows: minmax(44px, 54px);
+  }
+}
+
+/* Medium screens (501px-600px) */
+@media (min-width: 501px) and (max-width: 600px) {
+  .guess-grid {
+    max-height: calc(100vh - 220px);
+    max-height: calc(100svh - 220px);
+  }
+  
+  .tile {
+    font-size: 32px;
+  }
+  
+  .keyboard {
+    grid-auto-rows: minmax(46px, 56px);
+  }
+}
+
+/* Tablets and up */
+@media (min-width: 601px) {
+  .nyt-header-inner {
+    padding: 12px 20px;
+  }
+  
+  .guess-grid {
+    gap: 6px;
+    padding: 12px;
+    max-height: calc(100vh - 240px);
+    max-height: calc(100svh - 240px);
+  }
+  
+  .tile {
+    font-size: 36px;
+  }
+  
+  .keyboard {
+    gap: 8px;
+    padding: 12px;
+    margin-bottom: 15px;
+    grid-auto-rows: minmax(48px, 58px);
+  }
+  
+  .key {
+    font-size: 15px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 900px) {
+  .guess-grid {
+    max-height: calc(100vh - 260px);
+    max-height: calc(100svh - 260px);
+  }
+  
+  .tile {
+    font-size: 40px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  .nyt-header-inner {
+    padding: 6px 12px;
+  }
+  
+  .nyt-logo-icon {
+    height: 28px;
+  }
+  
+  .nyt-logo-text {
+    font-size: 18px;
+  }
+  
+  .guess-grid {
+    gap: 3px;
+    padding: 6px;
+    max-height: calc(100vh - 160px);
+    max-height: calc(100svh - 160px);
+  }
+  
+  .tile {
+    font-size: 20px;
+  }
+  
+  .keyboard {
+    grid-auto-rows: minmax(38px, 42px);
+    gap: 4px;
+    padding: 6px;
+    margin-bottom: 6px;
+  }
+  
+  .key {
+    font-size: 10px;
+  }
+  
+  .key > svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Very short landscape screens */
+@media (max-height: 500px) and (orientation: landscape) {
+  .guess-grid {
+    gap: 2px;
+    padding: 4px;
+    max-height: calc(100vh - 140px);
+    max-height: calc(100svh - 140px);
+  }
+  
+  .tile {
+    font-size: 18px;
+  }
+  
+  .keyboard {
+    grid-auto-rows: minmax(36px, 40px);
+    gap: 3px;
+    padding: 4px;
+    margin-bottom: 4px;
+  }
+  
+  .key {
+    font-size: 9px;
+  }
+}
