@@ -162,7 +162,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem; /* Add some gap between cards */
   justify-content: center;
-  max-width: 1040px; /* 3 cards × 320px + gaps */
+  max-width: 640px; /* 3 cards × 320px + gaps */
   margin: 0 auto; /* Center the grid container */
   padding: 0 1rem; /* Breathing room on small screens */
 }
@@ -378,4 +378,5 @@ body {
     align-items: flex-start;
     gap: 0.4rem;
   }
+
 }
