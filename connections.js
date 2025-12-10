@@ -204,5 +204,4 @@ function endGame(won) {
 }
 
 // Initialize game on load
-
 initGame();
