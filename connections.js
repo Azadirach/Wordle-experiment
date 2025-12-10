@@ -1,20 +1,20 @@
 const PUZZLES = [
     {
         groups: [
-            { category: "FISH", words: ["BASS", "FLOUNDER", "SALMON", "TROUT"], color: "yellow" },
-            { category: "PALINDROMES", words: ["KAYAK", "LEVEL", "RADAR", "ROTOR"], color: "green" },
-            { category: "___BOW", words: ["CROSS", "EYE", "LONG", "RAIN"], color: "blue" },
-            { category: "STARTS WITH BODY PARTS", words: ["HANDSOME", "LEGEND", "LIPSTICK", "NOSTALGIA"], color: "purple" }
+            { category: "CARS OWNED", words: ["HYUNDAI", "KIA", "SUZUKI", "HONDA"], color: "yellow" },
+            { category: "THINGS TRISHA HATES", words: ["FIREWORKS", "COCKROACH", "SCARY HOUSE", "MEN"], color: "green" },
+            { category: "CAN'T LIVE WITHOUT", words: ["KURKURE", "BTS", "FAMILY", "SLEEP"], color: "blue" },
+            { category: "PLACES VISITED (SUPPOSEDLY)", words: ["NEW YORK", "PARIS", "PALAU", "MALAYSIA"], color: "purple" }
         ]
     },
-    {
+    /*{
         groups: [
             { category: "PROGRAMMING LANGUAGES", words: ["JAVA", "PYTHON", "RUBY", "SWIFT"], color: "yellow" },
             { category: "COFFEE DRINKS", words: ["LATTE", "MOCHA", "ESPRESSO", "CAPPUCCINO"], color: "green" },
             { category: "UNITS OF TIME", words: ["SECOND", "MINUTE", "HOUR", "DAY"], color: "blue" },
             { category: "WORDS BEFORE 'BOARD'", words: ["SURF", "KEY", "CLIP", "CARD"], color: "purple" }
         ]
-    }
+    }*/
 ];
 
 let currentPuzzle;
@@ -204,4 +204,5 @@ function endGame(won) {
 }
 
 // Initialize game on load
+
 initGame();
